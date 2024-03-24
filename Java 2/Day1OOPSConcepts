@@ -1,1 +1,63 @@
+//   - Create a class called BankAccount with the following attributes: account number, account holder name, and account balance.
+//   - Create a constructor for the BankAccount class that initializes the account number, account holder name, and account balance.
+//   - Create methods to deposit and withdraw money from the account. The methods should update the account balance accordingly.
+//   - Create a method to display the account information, including the account number, account holder name, and account balance.
+
+
+package Java2;
+
+import java.util.*;
+
+public class BankAccount {
+    static int accountNumber ;
+    static String accountHolderName ;
+    static double accountBalance;
+    static int deposit;
+
+    public BankAccount(int accountNumber, String accountHolderName , double accountBalance){
+        this.accountNumber=accountNumber;
+        this.accountHolderName= accountHolderName;
+        this.accountBalance=accountBalance;
+    }
+    public static void deposit(int deposit){
+        accountBalance = accountBalance+deposit;
+        System.out.println("The current account balance after deposit is  : " + accountBalance);
+    }
+    public static void withdraw(int withdraw){
+        accountBalance = accountBalance-withdraw;
+        System.out.println("The current account balance after withdraw is  : " + accountBalance);
+    }
+    public static void displayAccountInformation(int accountNumber,String accountHolderName){
+
+        System.out.println("Account Number is : " + accountNumber);
+        System.out.println("Account Holder is : " + accountHolderName);
+        System.out.println("Account Balance is : " + accountBalance);
+
+    }
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the deposit amount :");
+        int deposit=scanner.nextInt();
+        deposit(deposit);
+
+        System.out.print("Enter the Withdraw amount :");
+        int withdrawl = scanner.nextInt();
+        withdraw(withdrawl);
+
+        System.out.print("Please enter Account Number :");
+        int accountNum=scanner.nextInt();
+        accountNumber=accountNum;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please enter Account Holder Name :");
+        String accHolderName = sc.nextLine();
+        accountHolderName = accHolderName;
+
+        displayAccountInformation(accountNumber,accountHolderName);
+    }
+}
+
 
