@@ -1,0 +1,29 @@
+//        Create a class called Person that represents a person, with properties for their name and age.
+//        The Person class should have a constructor that takes two parameters:
+//        a String for the person's name and an int for their age.
+//        The constructor should set the initial values of the name and age properties based on the passed-in values.
+//        Once you have created the Person class and its constructor, create two Person objects:
+//        one representing a person named "Alice" who is 25 years old, and another representing a person named "Bob" who is 30 years old.
+//        Then print out the name and age properties of each Person object.
+
+package Java2;
+
+public class Person {
+    private  String name;
+    private static int age;
+    public Person(String name, int age){
+        this.name = name;
+        this.age=age;
+    }
+
+    public static int getAge() {  return age;    }
+    public String getName() {  return name;      }
+
+    public static void main(String[] args) {
+        Person firstPerson= new Person("Alice",25);
+        System.out.println("First Person's name is " + firstPerson.name + " and her age is " + firstPerson.age );
+
+        Person secondPerson = new Person("Bob",30);
+        System.out.println("Second Person's name is " + secondPerson.name + " and his age is " + secondPerson.age );
+    }
+}
