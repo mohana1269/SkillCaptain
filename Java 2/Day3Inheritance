@@ -1,1 +1,69 @@
+//        1. Create a class named "Vehicle" with attributes: brand, model, year, and rentalPrice.
+//           - Implement a method to display the vehicle information.
+//
+//        2. Create a class named "Car" that extends "Vehicle" with an additional attribute: numberOfSeats.
+//           - Implement a method to retrieve the number of seats.
+//
+//        3. Create a class named "Motorcycle" that extends "Vehicle" with an additional attribute: engineCapacity.
+//           - Implement a method to retrieve the engine capacity.
+//
+//        4. In the main class, create instances of "Car" and "Motorcycle" classes and demonstrate:
+//           - Creating vehicles with specific attributes.
+//           - Displaying the information of each vehicle.
 
+package Java2.Inheritance;
+
+class Vehicle {
+    private String brand;
+    private String model;
+    private int  year;
+    private double rentalPrice;
+
+    public Vehicle(String brand, String model, int year, double rentalPrice){
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.rentalPrice = rentalPrice;
+    }
+    public void displayVehicleInformation() {
+        System.out.println("Brand is : " + brand);
+        System.out.println("Model is : " + model);
+        System.out.println("Year is : " + year);
+        System.out.println("Rental Price is : " + rentalPrice);
+    }
+}
+class Car extends Vehicle{
+    private int numberOfSeats;
+    public Car(String brand, String model, int year , double rentalPrice, int numberOfSeats){
+        super(brand, model, year, rentalPrice);
+        this.numberOfSeats = numberOfSeats;
+    }
+    public int getNumberOfSeats(){
+        return numberOfSeats;
+    }
+}
+class Motorcycle extends Vehicle{
+    private double engineCapacity;
+    public Motorcycle(String brand, String model, int year, double rentalPrice, double engineCapacity){
+       super(brand, model, year, rentalPrice);
+       this.engineCapacity = engineCapacity;
+    }
+    public double getEngineCapacity() {
+        return engineCapacity;
+    }
+}
+
+public class Main{
+    public static void main(String[] args) {
+
+        Car car = new Car("Tata", "SUV", 2024, 2150.50, 7);
+        Motorcycle motorcycle = new Motorcycle("Pulsar", "NS600", 2023, 550, 199.5);
+
+        car.displayVehicleInformation();
+        System.out.println("Number of Seats : " + car.getNumberOfSeats());
+        System.out.println();
+
+        motorcycle.displayVehicleInformation();
+        System.out.println("Engine Capacity is : " + motorcycle.getEngineCapacity());
+    }
+}
