@@ -1,0 +1,89 @@
+package Java2.Abstract;
+
+abstract class Vehicle {
+    protected String make;
+    protected String model;
+    protected int year;
+    protected double price;
+
+    public abstract void displayDetails();
+
+    public Vehicle(String make, String model, int year, double price) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.price = price;
+    }
+}
+
+class Car extends Vehicle{
+     private int numDoors;
+     private String fuelType;
+
+     public Car(String make, String model,int year,double price, int numDoors , String fuelType){
+         super(make, model, year, price);
+         this.numDoors = numDoors;
+         this.fuelType = fuelType;
+     }
+
+     @Override
+     public void displayDetails(){
+          System.out.println("The Car details are :");
+          System.out.println("Make is: " + make);
+          System.out.println("Model is: " + model);
+          System.out.println("Year is : "+ year);
+          System.out.println("Price is : " + price);
+          System.out.println("Number of Doors are : " + numDoors);
+          System.out.println("Fuel Type is : " + fuelType);
+               }
+
+     public double calculateMileage(){
+          double mileage;
+          mileage = price/year;
+          System.out.println("The Mileage of the car is : " + mileage);
+          return mileage;
+     }
+}
+
+ class Motorcycle extends Vehicle{
+     private boolean hasSidecar;
+     private double engineCapacity;
+
+     public Motorcycle(String make, String model,int year,double price,boolean hasSidecar, double engineCapacity){
+           super(make, model, year, price);
+           this.hasSidecar = hasSidecar;
+           this.engineCapacity = engineCapacity;
+      }
+
+     @Override
+     public void displayDetails(){
+          System.out.println("The Car details are :");
+          System.out.println("Make is: " + make);
+          System.out.println("Model is: " + model);
+          System.out.println("Year is : "+ year);
+          System.out.println("Price is : " + price);
+          System.out.println("It has Side car : " + hasSidecar);
+          System.out.println("Engine Capacity is : " + engineCapacity);
+     }
+
+     public double calculateSpeed(){
+           double speed;
+           speed = year/engineCapacity;
+           System.out.println("The speed is : " + speed );
+           return speed;
+     }
+}
+public class Main {
+     public static void main(String[] args) {
+         Car car = new Car("Tata", "Nano", 2024, 40000,4,"Petrol");
+        Motorcycle motorcycle = new Motorcycle("TVS", "NRS60", 2023,20000,false,666.78);
+
+         car.displayDetails();
+         car.calculateMileage();
+
+         System.out.println();
+
+         motorcycle.displayDetails();
+         motorcycle.calculateSpeed();
+     }
+}
