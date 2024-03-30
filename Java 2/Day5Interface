@@ -1,0 +1,98 @@
+/*
+
+1. Create an interface called `MusicPlayer` with the following methods:
+- `play()`: Abstract method that plays the current song.
+- `pause()`: Abstract method that pauses the current song.
+- `stop()`: Abstract method that stops the current song.
+- `addSong(String song)`: Abstract method that adds a new song to the playlist.
+- `removeSong(String song)`: Abstract method that removes a song from the playlist.
+
+2. Implement the `MusicPlayer` interface in a class called `MyMusicPlayer`. In this class, provide the necessary implementations for all the methods defined in the interface.
+
+3. In the `Main` class, create an instance of the `MyMusicPlayer` class and perform the following tasks:
+- Add at least five songs to the playlist using the `addSong()` method.
+- Play one of the songs using the `play()` method.
+- Pause the currently playing song using the `pause()` method.
+- Remove a song from the playlist using the `removeSong()` method.
+- Stop the currently playing song using the `stop()` method.
+
+4. Test the program by adding, playing, pausing, and stopping songs. Make sure the methods are functioning correctly and producing the expected output.
+
+5. Optional: Enhance the program by adding additional functionalities such as displaying the current playlist or implementing a shuffle feature.
+
+ */
+package Java2.Interface;
+
+import java.util.*;
+
+interface MusicPlayer {
+    void play();
+    void pause();
+    void stop();
+    void addSong(String song);
+    void removeSong(String song);
+}
+class MyMusicPlayer implements MusicPlayer {
+    private List Playlist;
+    private boolean isPlaying;
+    public MyMusicPlayer(){
+        this.Playlist = new ArrayList<>();
+        this.isPlaying = false;
+    }
+    @Override
+    public void play() {
+        if(Playlist.isEmpty()){
+            System.out.println("No Songs in the Playlist");
+            return;
+        }
+        System.out.println("Playing: " + Playlist.get(0));
+        isPlaying=true;
+    }
+
+    @Override
+    public void pause() {
+        if(isPlaying){
+            System.out.println("Paused : " + Playlist.get(2));
+        }else
+            System.out.println("No song is currently playing");
+    }
+
+    @Override
+    public void stop() {
+        if(isPlaying){
+            System.out.println("Stopped: " + Playlist.get(3));
+        }else
+            System.out.println("No Playlist is playing");
+    }
+
+    @Override
+    public void addSong(String song) {
+        Playlist.add(song);
+        System.out.println("Added song in the playlist :" + song);
+    }
+
+    @Override
+    public void removeSong(String song) {
+        if(Playlist.contains(song)){
+            Playlist.remove(song);
+            System.out.println("Removed Song: " + song);
+        }else
+            System.out.println("Song not found in the Playlist");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        MusicPlayer musicPlayer = new MyMusicPlayer();
+
+        musicPlayer.addSong("Song 1");
+        musicPlayer.addSong("Song 2");
+        musicPlayer.addSong("Song 3");
+        musicPlayer.addSong("Song 4");
+        musicPlayer.addSong("Song 5");
+
+        musicPlayer.play();
+        musicPlayer.pause();
+        musicPlayer.stop();
+        musicPlayer.removeSong("Song 5");
+    }
+}
