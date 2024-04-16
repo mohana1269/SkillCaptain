@@ -1,0 +1,21 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class FileReader {
+    public static void main(String[] args) {
+        String filePath = "src/main/resources/input.txt";
+        int count = countOccurrences(filePath, "Java");
+        System.out.println("Total occurrences of 'Java': " + count);
+    }
+
+    private static int countOccurrences(String filePath, String targetWord) {
+        try {
+            String content = Files.readString(Paths.get(filePath));
+            return (int) content.split("\\b" + targetWord + "\\b", -1).length - 1;
+        } catch (IOException e) {
+            System.out.println("File not found: " + filePath);
+            return 0;
+        }
+    }
+}
