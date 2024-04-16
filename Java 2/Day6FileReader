@@ -4,7 +4,7 @@ import java.nio.file.Paths;
 
 public class FileReader {
     public static void main(String[] args) {
-        String filePath = "src/main/resources/input.txt";
+        String filePath = "Java 2/input.txt";
         int count = countOccurrences(filePath, "Java");
         System.out.println("Total occurrences of 'Java': " + count);
     }
