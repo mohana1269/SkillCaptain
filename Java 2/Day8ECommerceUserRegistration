@@ -1,1 +1,63 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+public class ECommerceUserRegistration {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<HashMap<String, String>> users = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Please enter name :");
+            String name = scanner.nextLine();
+
+            System.out.print("Please enter email address : ");
+            String email = scanner.nextLine();
+
+            while (!isValidEmail(email)) {
+                System.out.println("Invalid email address entered, please enter valid email address");
+                email = scanner.nextLine();
+            }
+
+            System.out.print("Please enter password : ");
+            String password = scanner.nextLine();
+
+            System.out.print("Please enter shipping address : ");
+            String shippingAddress = scanner.nextLine();
+
+            HashMap<String, String> user = new HashMap<>();
+            user.put("Name", name);
+            user.put("Email", email);
+            user.put("Password", password);
+            user.put("Shipping Address", shippingAddress);
+
+            users.add(user);
+            System.out.println("User Details Registered Successfully");
+
+            System.out.print("Do you still want to enter another user details(yes/no) : ");
+            String choice = scanner.nextLine();
+            if (!choice.equalsIgnoreCase("yes")) {
+                 break;
+            }
+        }
+        System.out.println("Registered Users are : ");
+
+        for(HashMap<String,String> user : users) {
+            System.out.println("Name : " +user.get("Name"));
+            System.out.println("Email : " + user.get("Email"));
+            System.out.println("Password : " + user.get("Password"));
+            System.out.println("Shipping Address " + user.get("Shipping Address"));
+        }
+        scanner.close();
+
+    }
+    private static boolean isValidEmail(String email){
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+}
