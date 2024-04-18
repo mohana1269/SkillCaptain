@@ -10,6 +10,7 @@ public class FileWriter {
         writeToFile(content);
         scanner.close();
     }
+
     private static void writeToFile(String content){
         try{
             BufferedWriter writer = new BufferedWriter(new java.io.FileWriter("Java2.output.txt"));
@@ -18,7 +19,5 @@ public class FileWriter {
         }catch(IOException e){
             System.out.println("Error Occurred");
         }
-
     }
 }
-
