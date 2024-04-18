@@ -1,1 +1,24 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class FileWriter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the content : ");
+        String content = scanner.nextLine();
+        writeToFile(content);
+        scanner.close();
+    }
+    private static void writeToFile(String content){
+        try{
+            BufferedWriter writer = new BufferedWriter(new java.io.FileWriter("Java2.output.txt"));
+            writer.write(content);
+            writer.close();
+        }catch(IOException e){
+            System.out.println("Error Occurred");
+        }
+
+    }
+}
 
