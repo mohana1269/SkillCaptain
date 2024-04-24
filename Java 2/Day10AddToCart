@@ -1,0 +1,105 @@
+import java.util.ArrayList;
+import java.util.List;
+
+    class Product {
+        private int productId;
+        private String productName;
+        private double price;
+        private int quantity;
+
+        public Product(int productId, String productName, double price, int quantity) {
+            this.productId = productId;
+            this.productName = productName;
+            this.price = price;
+            this.quantity = quantity;
+        }
+
+        public int getProductId() {
+            return productId;
+        }
+
+        public String getProductName() {
+            return productName;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
+    }
+
+    class Cart {
+        private List<Product> products;
+
+        public Cart() {
+            this.products = new ArrayList<>();
+        }
+
+        public void addToCart(Product product) {
+            products.add(product);
+        }
+
+        public void removeFromCart(Product product) {
+            products.remove(product);
+            System.out.println("Removed the product 1");
+        }
+
+        public void updateQuantity(Product product, int quantity) {
+            for (Product p : products) {
+                if (p.getProductId() == product.getProductId()) {
+                    p.setQuantity(quantity);
+                    break;
+                }
+            }
+        }
+
+        public void viewCart() {
+            System.out.println("Products in Cart:");
+            for (Product product : products) {
+                System.out.println("Product ID: " + product.getProductId() + ", Name: " + product.getProductName()
+                        + ", Price: $" + product.getPrice() + ", Quantity: " + product.getQuantity());
+            }
+        }
+
+        public void checkout() {
+            double total = 0;
+            for (Product product : products) {
+                total += product.getPrice() * product.getQuantity();
+            }
+            System.out.println("Total amount to be paid: $" + total);
+        }
+    }
+
+    public class Day10AddToCart {
+        public static void main(String[] args) {
+
+            Product product1 = new Product(1, "Laptop", 999.99, 1);
+            Product product2 = new Product(2, "Mouse", 19.99, 2);
+            Product product3 = new Product(3, "Keyboard", 49.99, 1);
+
+            Cart cart = new Cart();
+
+            cart.addToCart(product1);
+            cart.addToCart(product2);
+            cart.addToCart(product3);
+
+            cart.viewCart();
+
+            cart.updateQuantity(product2, 3);
+
+            cart.viewCart();
+
+            cart.checkout();
+
+            cart.removeFromCart(product1);
+
+            cart.viewCart();
+        }
+}
